@@ -1,109 +1,54 @@
-// Transpositions-Logik für HarmoniX
-class TranspositionTool {
+// Transpositions-Tool für Musikinstrumente
+class MusicTransposer {
     constructor() {
-        this.keys = [
-            'C', 'C#', 'D', 'D#', 'E', 'F', 
-            'F#', 'G', 'G#', 'A', 'A#', 'B'
-        ];
+        // Chromatische Tonleiter
+        this.chromaticScale = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
         
-        this.keyDisplayNames = {
-            'C': 'C-Dur',
-            'C#': 'C#-Dur / Db-Dur',
-            'D': 'D-Dur',
-            'D#': 'D#-Dur / Eb-Dur',
-            'E': 'E-Dur',
-            'F': 'F-Dur',
-            'F#': 'F#-Dur / Gb-Dur',
-            'G': 'G-Dur',
-            'G#': 'G#-Dur / Ab-Dur',
-            'A': 'A-Dur',
-            'A#': 'A#-Dur / Bb-Dur',
-            'B': 'B-Dur / H-Dur',
-            'Am': 'a-Moll',
-            'A#m': 'a#-Moll / bb-Moll',
-            'Bm': 'h-Moll',
-            'Cm': 'c-Moll',
-            'C#m': 'c#-Moll / db-Moll',
-            'Dm': 'd-Moll',
-            'D#m': 'd#-Moll / eb-Moll',
-            'Em': 'e-Moll',
-            'Fm': 'f-Moll',
-            'F#m': 'f#-Moll / gb-Moll',
-            'Gm': 'g-Moll',
-            'G#m': 'g#-Moll / ab-Moll'
+        // Anzeigenamen für Tonarten
+        this.keyNames = {
+            'C': 'C-Dur', 'C#': 'C#-Dur / Db-Dur', 'D': 'D-Dur', 'D#': 'D#-Dur / Eb-Dur',
+            'E': 'E-Dur', 'F': 'F-Dur', 'F#': 'F#-Dur / Gb-Dur', 'G': 'G-Dur',
+            'G#': 'G#-Dur / Ab-Dur', 'A': 'A-Dur', 'A#': 'A#-Dur / Bb-Dur', 'B': 'B-Dur',
+            'Am': 'a-Moll', 'A#m': 'a#-Moll / bb-Moll', 'Bm': 'h-Moll', 'Cm': 'c-Moll',
+            'C#m': 'c#-Moll / db-Moll', 'Dm': 'd-Moll', 'D#m': 'd#-Moll / eb-Moll',
+            'Em': 'e-Moll', 'Fm': 'f-Moll', 'F#m': 'f#-Moll / gb-Moll',
+            'Gm': 'g-Moll', 'G#m': 'g#-Moll / ab-Moll'
         };
         
-        // Transpositions-Intervalle für verschiedene Instrumente
-        this.instrumentTranspositions = {
-            'concert': 0,    // Konzertinstrument (C)
-            'bb': 2,         // B♭-Instrument (große Sekunde höher notiert)
-            'eb': 9,         // E♭-Instrument (große Sexte höher notiert)
-            'f': 7,          // F-Instrument (Quinte höher notiert)
-            'g': 10,         // G-Instrument (kleine Septime höher notiert)
-            'a': 3           // A-Instrument (kleine Terz höher notiert)
+        // Transpositions-Intervalle für Instrumente (in Halbtönen)
+        this.instrumentIntervals = {
+            'C': 0,     // Konzertinstrument
+            'Bb': 2,    // B♭-Instrument (große Sekunde höher notiert)
+            'Eb': 9,    // E♭-Instrument (große Sexte höher notiert)
+            'F': 7,     // F-Instrument (Quinte höher notiert)
+            'G': 10     // G-Instrument (kleine Septime höher notiert)
         };
         
+        // Intervall-Namen
         this.intervalNames = {
             0: 'Unison (keine Transposition)',
-            1: 'kleine Sekunde',
-            2: 'große Sekunde',
-            3: 'kleine Terz',
-            4: 'große Terz',
-            5: 'Quarte',
+            1: 'kleine Sekunde aufwärts',
+            2: 'große Sekunde aufwärts',
+            3: 'kleine Terz aufwärts',
+            4: 'große Terz aufwärts',
+            5: 'Quarte aufwärts',
             6: 'Tritonus',
-            7: 'Quinte',
-            8: 'kleine Sexte',
-            9: 'große Sexte',
-            10: 'kleine Septime',
-            11: 'große Septime'
+            7: 'Quinte aufwärts',
+            8: 'kleine Sexte aufwärts',
+            9: 'große Sexte aufwärts',
+            10: 'kleine Septime aufwärts',
+            11: 'große Septime aufwärts'
         };
-        
-        this.initializeEventListeners();
     }
     
-    initializeEventListeners() {
-        const originalKey = document.getElementById('original-key');
-        const instrument = document.getElementById('instrument');
-        const targetInstrument = document.getElementById('target-instrument');
-        const transposeBtn = document.getElementById('transpose-btn');
-        
-        // Event Listeners für Eingabevalidierung
-        [originalKey, instrument, targetInstrument].forEach(element => {
-            element.addEventListener('change', () => this.validateInputs());
-        });
-        
-        // Transpositions-Button
-        transposeBtn.addEventListener('click', () => this.performTransposition());
-        
-        // Initial validation
-        this.validateInputs();
-    }
-    
-    validateInputs() {
-        const originalKey = document.getElementById('original-key').value;
-        const instrument = document.getElementById('instrument').value;
-        const targetInstrument = document.getElementById('target-instrument').value;
-        const transposeBtn = document.getElementById('transpose-btn');
-        
-        const isValid = originalKey && instrument && targetInstrument;
-        transposeBtn.disabled = !isValid;
-        
-        if (isValid) {
-            transposeBtn.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-        } else {
-            transposeBtn.style.background = '#cbd5e0';
-        }
-    }
-    
+    // Berechne Index einer Tonart in der chromatischen Tonleiter
     getKeyIndex(key) {
-        // Behandle Moll-Tonarten
-        if (key.includes('m')) {
-            const baseKey = key.replace('m', '');
-            return this.keys.indexOf(baseKey);
-        }
-        return this.keys.indexOf(key);
+        const isMinor = key.includes('m');
+        const baseKey = isMinor ? key.replace('m', '') : key;
+        return this.chromaticScale.indexOf(baseKey);
     }
     
+    // Transponiere eine Tonart um eine bestimmte Anzahl von Halbtönen
     transposeKey(originalKey, semitones) {
         const isMinor = originalKey.includes('m');
         const baseKey = isMinor ? originalKey.replace('m', '') : originalKey;
@@ -115,16 +60,16 @@ class TranspositionTool {
         let newIndex = (originalIndex + semitones) % 12;
         if (newIndex < 0) newIndex += 12;
         
-        const newKey = this.keys[newIndex];
+        const newKey = this.chromaticScale[newIndex];
         return isMinor ? newKey + 'm' : newKey;
     }
     
-    calculateTranspositionInterval(fromInstrument, toInstrument) {
-        const fromTransposition = this.instrumentTranspositions[fromInstrument];
-        const toTransposition = this.instrumentTranspositions[toInstrument];
+    // Berechne Transpositions-Intervall zwischen zwei Instrumenten
+    calculateInterval(fromInstrument, toInstrument) {
+        const fromInterval = this.instrumentIntervals[fromInstrument];
+        const toInterval = this.instrumentIntervals[toInstrument];
         
-        // Berechne die Differenz zwischen den Instrumenten
-        let interval = toTransposition - fromTransposition;
+        let interval = toInterval - fromInterval;
         
         // Normalisiere auf 0-11 Bereich
         while (interval < 0) interval += 12;
@@ -132,102 +77,86 @@ class TranspositionTool {
         
         return interval;
     }
-    
-    performTransposition() {
-        const originalKey = document.getElementById('original-key').value;
-        const instrument = document.getElementById('instrument').value;
-        const targetInstrument = document.getElementById('target-instrument').value;
-        
-        if (!originalKey || !instrument || !targetInstrument) return;
-        
-        // Berechne Transpositions-Intervall
-        const interval = this.calculateTranspositionInterval(instrument, targetInstrument);
-        
-        // Transponiere die Tonart
-        const transposedKey = this.transposeKey(originalKey, interval);
-        
-        // Zeige Ergebnis an
-        this.displayResult(originalKey, transposedKey, interval);
-    }
-    
-    displayResult(originalKey, transposedKey, interval) {
-        const resultSection = document.getElementById('result-section');
-        const originalResult = document.getElementById('original-result');
-        const transposedResult = document.getElementById('transposed-result');
-        const intervalResult = document.getElementById('interval-result');
-        
-        // Setze Ergebnis-Werte
-        originalResult.textContent = this.keyDisplayNames[originalKey] || originalKey;
-        transposedResult.textContent = this.keyDisplayNames[transposedKey] || transposedKey;
-        intervalResult.textContent = this.intervalNames[interval] || `${interval} Halbtöne`;
-        
-        // Zeige Ergebnis-Sektion mit Animation
-        resultSection.classList.remove('hidden');
-        
-        // Scroll zum Ergebnis
-        setTimeout(() => {
-            resultSection.scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'nearest' 
-            });
-        }, 300);
-        
-        // Erfolgs-Animation für den Button
-        const transposeBtn = document.getElementById('transpose-btn');
-        const originalText = transposeBtn.innerHTML;
-        
-        transposeBtn.innerHTML = '<i class="fas fa-check"></i> Transponiert!';
-        transposeBtn.style.background = 'linear-gradient(135deg, #48bb78 0%, #38a169 100%)';
-        
-        setTimeout(() => {
-            transposeBtn.innerHTML = originalText;
-            transposeBtn.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-        }, 2000);
-    }
 }
 
-// Initialisiere die Anwendung
-document.addEventListener('DOMContentLoaded', () => {
-    new TranspositionTool();
-    
-    // Zusätzliche UI-Verbesserungen
-    addUIEnhancements();
-});
+// Globale Instanz des Transposers
+const transposer = new MusicTransposer();
 
-function addUIEnhancements() {
-    // Smooth scrolling für bessere UX
-    document.documentElement.style.scrollBehavior = 'smooth';
+// Hauptfunktion für Transposition
+function transpose() {
+    const originalKey = document.getElementById('originalKey').value;
+    const fromInstrument = document.getElementById('fromInstrument').value;
+    const toInstrument = document.getElementById('toInstrument').value;
     
-    // Keyboard navigation support
-    document.addEventListener('keydown', (e) => {
+    // Validierung
+    if (!originalKey || !fromInstrument || !toInstrument) {
+        alert('Bitte alle Felder ausfüllen!');
+        return;
+    }
+    
+    // Berechne Transposition
+    const interval = transposer.calculateInterval(fromInstrument, toInstrument);
+    const transposedKey = transposer.transposeKey(originalKey, interval);
+    
+    // Zeige Ergebnis
+    displayResult(originalKey, transposedKey, interval);
+}
+
+// Zeige Transpositions-Ergebnis an
+function displayResult(originalKey, transposedKey, interval) {
+    const resultDiv = document.getElementById('result');
+    const originalResult = document.getElementById('originalResult');
+    const transposedResult = document.getElementById('transposedResult');
+    const intervalResult = document.getElementById('intervalResult');
+    
+    // Setze Ergebnis-Texte
+    originalResult.textContent = transposer.keyNames[originalKey] || originalKey;
+    transposedResult.textContent = transposer.keyNames[transposedKey] || transposedKey;
+    intervalResult.textContent = transposer.intervalNames[interval] || `${interval} Halbtöne`;
+    
+    // Zeige Ergebnis-Bereich
+    resultDiv.classList.remove('hidden');
+    
+    // Scroll zum Ergebnis
+    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    
+    // Button-Feedback
+    const button = document.getElementById('transposeBtn');
+    const originalText = button.textContent;
+    
+    button.textContent = '✓ Transponiert!';
+    button.style.background = 'linear-gradient(135deg, #48bb78 0%, #38a169 100%)';
+    
+    setTimeout(() => {
+        button.textContent = originalText;
+        button.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+    }, 2000);
+}
+
+// Event Listeners für bessere UX
+document.addEventListener('DOMContentLoaded', function() {
+    // Enter-Taste für Transposition
+    document.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
-            const transposeBtn = document.getElementById('transpose-btn');
-            if (!transposeBtn.disabled) {
-                transposeBtn.click();
-            }
+            transpose();
         }
     });
     
-    // Touch-friendly hover effects für mobile Geräte
-    if ('ontouchstart' in window) {
-        const cards = document.querySelectorAll('.info-card, .transposition-card');
-        cards.forEach(card => {
-            card.addEventListener('touchstart', () => {
-                card.style.transform = 'translateY(-2px)';
-            });
-            
-            card.addEventListener('touchend', () => {
-                setTimeout(() => {
-                    card.style.transform = '';
-                }, 150);
-            });
-        });
+    // Automatische Validierung
+    const selects = document.querySelectorAll('select');
+    selects.forEach(select => {
+        select.addEventListener('change', validateForm);
+    });
+    
+    function validateForm() {
+        const originalKey = document.getElementById('originalKey').value;
+        const fromInstrument = document.getElementById('fromInstrument').value;
+        const toInstrument = document.getElementById('toInstrument').value;
+        const button = document.getElementById('transposeBtn');
+        
+        button.disabled = !(originalKey && fromInstrument && toInstrument);
     }
     
-    // Preload wichtiger Ressourcen
-    const link = document.createElement('link');
-    link.rel = 'preload';
-    link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap';
-    link.as = 'style';
-    document.head.appendChild(link);
-}
+    // Initial validation
+    validateForm();
+});

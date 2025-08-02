@@ -1,0 +1,272 @@
+/* Reset und Basis-Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+/* Card Styles */
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+}
+
+.card h2 {
+    color: #4a5568;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 16px;
+    background: white;
+    transition: border-color 0.3s ease;
+}
+
+select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+select:hover {
+    border-color: #cbd5e0;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:disabled {
+    background: #cbd5e0;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Result Section */
+.result {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f7fafc;
+    border-radius: 10px;
+    border: 2px solid #e2e8f0;
+    transition: all 0.5s ease;
+}
+
+.result.hidden {
+    display: none;
+}
+
+.result h3 {
+    color: #2d3748;
+    margin-bottom: 15px;
+}
+
+.result-content p {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.highlight {
+    color: #667eea;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+/* Info Section */
+.info-section {
+    display: grid;
+    gap: 20px;
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.info-card h3 {
+    color: #4a5568;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.info-card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.info-card li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #f7fafc;
+    border-radius: 5px;
+    border-left: 4px solid #667eea;
+}
+
+.info-card p {
+    line-height: 1.6;
+    color: #4a5568;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 40px;
+    padding: 20px 0;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .container {
+        padding: 40px 20px;
+    }
+    
+    main {
+        grid-template-columns: 2fr 1fr;
+        gap: 40px;
+    }
+    
+    header h1 {
+        font-size: 3rem;
+    }
+    
+    .info-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 1024px) {
+    .form-group {
+        display: inline-block;
+        width: 48%;
+        margin-right: 4%;
+    }
+    
+    .form-group:nth-child(3n) {
+        margin-right: 0;
+    }
+    
+    .form-group:first-child {
+        width: 100%;
+        margin-right: 0;
+    }
+}
+
+/* Animationen */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card, .info-card {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.info-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+/* Hover-Effekte */
+.info-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    transition: all 0.3s ease;
+}

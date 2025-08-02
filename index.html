@@ -3,142 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HarmoniX - Transpositions-Tool</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Tonarten Transposer - Musikinstrumente</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <header class="header">
-            <div class="logo">
-                <i class="fas fa-music"></i>
-                <h1>HarmoniX</h1>
-            </div>
-            <p class="subtitle">Professionelles Transpositions-Tool für Musiker</p>
+        <header>
+            <h1>🎵 Tonarten Transposer</h1>
+            <p>Transponiere Tonarten für verschiedene Musikinstrumente</p>
         </header>
 
-        <main class="main-content">
-            <div class="transposition-card">
-                <div class="card-header">
-                    <h2><i class="fas fa-exchange-alt"></i> Tonart transponieren</h2>
-                </div>
+        <main>
+            <div class="card">
+                <h2>Transposition berechnen</h2>
                 
-                <div class="input-section">
-                    <div class="input-group">
-                        <label for="original-key">Ursprüngliche Tonart</label>
-                        <select id="original-key" class="key-select">
-                            <option value="">Tonart wählen...</option>
-                            <option value="C">C-Dur</option>
-                            <option value="C#">C#-Dur / Db-Dur</option>
-                            <option value="D">D-Dur</option>
-                            <option value="D#">D#-Dur / Eb-Dur</option>
-                            <option value="E">E-Dur</option>
-                            <option value="F">F-Dur</option>
-                            <option value="F#">F#-Dur / Gb-Dur</option>
-                            <option value="G">G-Dur</option>
-                            <option value="G#">G#-Dur / Ab-Dur</option>
-                            <option value="A">A-Dur</option>
-                            <option value="A#">A#-Dur / Bb-Dur</option>
-                            <option value="B">B-Dur / H-Dur</option>
-                            <option value="Am">a-Moll</option>
-                            <option value="A#m">a#-Moll / bb-Moll</option>
-                            <option value="Bm">h-Moll</option>
-                            <option value="Cm">c-Moll</option>
-                            <option value="C#m">c#-Moll / db-Moll</option>
-                            <option value="Dm">d-Moll</option>
-                            <option value="D#m">d#-Moll / eb-Moll</option>
-                            <option value="Em">e-Moll</option>
-                            <option value="Fm">f-Moll</option>
-                            <option value="F#m">f#-Moll / gb-Moll</option>
-                            <option value="Gm">g-Moll</option>
-                            <option value="G#m">g#-Moll / ab-Moll</option>
-                        </select>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="instrument">Instrument</label>
-                        <select id="instrument" class="instrument-select">
-                            <option value="">Instrument wählen...</option>
-                            <option value="concert">Konzertinstrument (C)</option>
-                            <option value="bb">B♭-Instrument (Trompete, Klarinette, Tenorsax)</option>
-                            <option value="eb">E♭-Instrument (Altsax, Baritonsax)</option>
-                            <option value="f">F-Instrument (Horn)</option>
-                            <option value="g">G-Instrument (Altflöte)</option>
-                            <option value="a">A-Instrument (Klarinette in A)</option>
-                        </select>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="target-instrument">Ziel-Instrument</label>
-                        <select id="target-instrument" class="instrument-select">
-                            <option value="">Ziel-Instrument wählen...</option>
-                            <option value="concert">Konzertinstrument (C)</option>
-                            <option value="bb">B♭-Instrument (Trompete, Klarinette, Tenorsax)</option>
-                            <option value="eb">E♭-Instrument (Altsax, Baritonsax)</option>
-                            <option value="f">F-Instrument (Horn)</option>
-                            <option value="g">G-Instrument (Altflöte)</option>
-                            <option value="a">A-Instrument (Klarinette in A)</option>
-                        </select>
-                    </div>
+                <div class="form-group">
+                    <label for="originalKey">Ursprüngliche Tonart:</label>
+                    <select id="originalKey">
+                        <option value="">-- Tonart wählen --</option>
+                        <option value="C">C-Dur</option>
+                        <option value="C#">C#-Dur / Db-Dur</option>
+                        <option value="D">D-Dur</option>
+                        <option value="D#">D#-Dur / Eb-Dur</option>
+                        <option value="E">E-Dur</option>
+                        <option value="F">F-Dur</option>
+                        <option value="F#">F#-Dur / Gb-Dur</option>
+                        <option value="G">G-Dur</option>
+                        <option value="G#">G#-Dur / Ab-Dur</option>
+                        <option value="A">A-Dur</option>
+                        <option value="A#">A#-Dur / Bb-Dur</option>
+                        <option value="B">B-Dur</option>
+                        <option value="Am">a-Moll</option>
+                        <option value="A#m">a#-Moll / bb-Moll</option>
+                        <option value="Bm">h-Moll</option>
+                        <option value="Cm">c-Moll</option>
+                        <option value="C#m">c#-Moll / db-Moll</option>
+                        <option value="Dm">d-Moll</option>
+                        <option value="D#m">d#-Moll / eb-Moll</option>
+                        <option value="Em">e-Moll</option>
+                        <option value="Fm">f-Moll</option>
+                        <option value="F#m">f#-Moll / gb-Moll</option>
+                        <option value="Gm">g-Moll</option>
+                        <option value="G#m">g#-Moll / ab-Moll</option>
+                    </select>
                 </div>
 
-                <button id="transpose-btn" class="transpose-btn" disabled>
-                    <i class="fas fa-calculator"></i>
-                    Transponieren
-                </button>
+                <div class="form-group">
+                    <label for="fromInstrument">Von Instrument:</label>
+                    <select id="fromInstrument">
+                        <option value="">-- Instrument wählen --</option>
+                        <option value="C">Konzertinstrument (C) - Klavier, Gitarre</option>
+                        <option value="Bb">B♭-Instrument - Trompete, Klarinette, Tenorsax</option>
+                        <option value="Eb">E♭-Instrument - Altsax, Baritonsax</option>
+                        <option value="F">F-Instrument - Horn</option>
+                        <option value="G">G-Instrument - Altflöte</option>
+                    </select>
+                </div>
 
-                <div id="result-section" class="result-section hidden">
-                    <div class="result-card">
-                        <h3><i class="fas fa-check-circle"></i> Ergebnis</h3>
-                        <div class="result-content">
-                            <div class="result-item">
-                                <span class="label">Ursprüngliche Tonart:</span>
-                                <span id="original-result" class="value"></span>
-                            </div>
-                            <div class="result-item">
-                                <span class="label">Transponierte Tonart:</span>
-                                <span id="transposed-result" class="value highlight"></span>
-                            </div>
-                            <div class="result-item">
-                                <span class="label">Intervall:</span>
-                                <span id="interval-result" class="value"></span>
-                            </div>
-                        </div>
+                <div class="form-group">
+                    <label for="toInstrument">Zu Instrument:</label>
+                    <select id="toInstrument">
+                        <option value="">-- Ziel-Instrument wählen --</option>
+                        <option value="C">Konzertinstrument (C) - Klavier, Gitarre</option>
+                        <option value="Bb">B♭-Instrument - Trompete, Klarinette, Tenorsax</option>
+                        <option value="Eb">E♭-Instrument - Altsax, Baritonsax</option>
+                        <option value="F">F-Instrument - Horn</option>
+                        <option value="G">G-Instrument - Altflöte</option>
+                    </select>
+                </div>
+
+                <button id="transposeBtn" onclick="transpose()">Transponieren</button>
+
+                <div id="result" class="result hidden">
+                    <h3>Ergebnis:</h3>
+                    <div class="result-content">
+                        <p><strong>Ursprüngliche Tonart:</strong> <span id="originalResult"></span></p>
+                        <p><strong>Transponierte Tonart:</strong> <span id="transposedResult" class="highlight"></span></p>
+                        <p><strong>Intervall:</strong> <span id="intervalResult"></span></p>
                     </div>
                 </div>
             </div>
 
             <div class="info-section">
                 <div class="info-card">
-                    <h3><i class="fas fa-info-circle"></i> Häufige Transpositionen</h3>
-                    <div class="transposition-examples">
-                        <div class="example">
-                            <strong>B♭-Instrumente:</strong> Klingen eine große Sekunde tiefer
-                        </div>
-                        <div class="example">
-                            <strong>E♭-Instrumente:</strong> Klingen eine große Sexte tiefer
-                        </div>
-                        <div class="example">
-                            <strong>F-Instrumente:</strong> Klingen eine Quinte tiefer
-                        </div>
-                    </div>
+                    <h3>💡 Häufige Transpositionen</h3>
+                    <ul>
+                        <li><strong>B♭-Instrumente:</strong> Klingen eine große Sekunde tiefer als notiert</li>
+                        <li><strong>E♭-Instrumente:</strong> Klingen eine große Sexte tiefer als notiert</li>
+                        <li><strong>F-Instrumente:</strong> Klingen eine Quinte tiefer als notiert</li>
+                    </ul>
                 </div>
 
                 <div class="info-card">
-                    <h3><i class="fas fa-lightbulb"></i> Tipps</h3>
-                    <ul class="tips-list">
-                        <li>Wählen Sie zuerst die ursprüngliche Tonart aus</li>
-                        <li>Bestimmen Sie das Ausgangs- und Zielinstrument</li>
-                        <li>Das Tool berechnet automatisch die korrekte Transposition</li>
-                        <li>Für Konzertinstrumente (Klavier, Gitarre) wählen Sie "Konzertinstrument (C)"</li>
-                    </ul>
+                    <h3>📝 Beispiel</h3>
+                    <p>Ein Altsaxophon (E♭) spielt in "G-Dur" geschriebene Noten. 
+                    Für ein Klavier (C) muss die Tonart nach "B♭-Dur" transponiert werden.</p>
                 </div>
             </div>
         </main>
 
-        <footer class="footer">
-            <p>&copy; 2025 HarmoniX. Entwickelt für Musiker von Musikern.</p>
+        <footer>
+            <p>&copy; 2025 Tonarten Transposer - Für Musiker entwickelt</p>
         </footer>
     </div>
 
