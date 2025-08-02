@@ -6,13 +6,13 @@ class MusicTransposer {
         
         // Anzeigenamen für Tonarten
         this.keyNames = {
-            'C': 'C-Dur', 'C#': 'C#-Dur / Db-Dur', 'D': 'D-Dur', 'D#': 'D#-Dur / Eb-Dur',
-            'E': 'E-Dur', 'F': 'F-Dur', 'F#': 'F#-Dur / Gb-Dur', 'G': 'G-Dur',
-            'G#': 'G#-Dur / Ab-Dur', 'A': 'A-Dur', 'A#': 'A#-Dur / Bb-Dur', 'B': 'B-Dur',
-            'Am': 'a-Moll', 'A#m': 'a#-Moll / bb-Moll', 'Bm': 'h-Moll', 'Cm': 'c-Moll',
-            'C#m': 'c#-Moll / db-Moll', 'Dm': 'd-Moll', 'D#m': 'd#-Moll / eb-Moll',
-            'Em': 'e-Moll', 'Fm': 'f-Moll', 'F#m': 'f#-Moll / gb-Moll',
-            'Gm': 'g-Moll', 'G#m': 'g#-Moll / ab-Moll'
+            'C': 'C-Dur', 'C#': 'C#-Dur / D♭-Dur', 'D': 'D-Dur', 'D#': 'D#-Dur / E♭-Dur',
+            'E': 'E-Dur', 'F': 'F-Dur', 'F#': 'F#-Dur / G♭-Dur', 'G': 'G-Dur',
+            'G#': 'G#-Dur / A♭-Dur', 'A': 'A-Dur', 'A#': 'A#-Dur / B♭-Dur', 'B': 'H-Dur',
+            'Am': 'a-Moll', 'A#m': 'a#-Moll / b♭-Moll', 'Bm': 'h-Moll', 'Cm': 'c-Moll',
+            'C#m': 'c#-Moll / d♭-Moll', 'Dm': 'd-Moll', 'D#m': 'd#-Moll / e♭-Moll',
+            'Em': 'e-Moll', 'Fm': 'f-Moll', 'F#m': 'f#-Moll / g♭-Moll',
+            'Gm': 'g-Moll', 'G#m': 'g#-Moll / a♭-Moll'
         };
         
         // Transpositions-Intervalle für Instrumente (in Halbtönen)
