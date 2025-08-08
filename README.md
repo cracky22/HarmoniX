@@ -1,2 +1,2 @@
 # HarmoniX
-Tool zur Transponierung von Tonarten
+Tool zur Transponierung von Tonarten.
