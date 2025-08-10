@@ -102,7 +102,16 @@
         </main>
 
         <footer>
-            <p>&copy; 2025 Martin Blieninger - Für Musiker entwickelt</p>
+            <p>&copy; 2025 <m style="cursor: pointer;" onclick="view_profile();">Martin Blieninger</m> - Für Musiker entwickelt</p>
+            <pre style="cursor: pointer;" onclick="view_on_github();">v1.0.1</pre>
+            <script>
+                function view_profile() {
+                    window.location.href='https://cracky.ddns.net/about%20me';
+                }
+                function view_on_github() {
+                    window.location.href='https://github.com/cracky22/HarmoniX';
+                }
+            </script>
         </footer>
     </div>
 
