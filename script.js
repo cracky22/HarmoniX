@@ -74,7 +74,9 @@ function transpose() {
     }
     const interval = transposer.calculateInterval(fromInstrument, toInstrument);
     const transposedKey = transposer.transposeKey(originalKey, interval);
-    displayResult(originalKey, transposedKey, interval);
+    setTimeout(() => {
+        displayResult(originalKey, transposedKey, interval);
+    }, 500);
 }
 
 function displayResult(originalKey, transposedKey, interval) {
