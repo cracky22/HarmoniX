@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./music.png" type="image/x-icon"> <!--Copyright https://www.flaticon.com/free-icon/music_3083417-->
+    <link rel="shortcut icon" href="./music.png" type="image/x-icon">
+    <!--Copyright https://www.flaticon.com/free-icon/music_3083417-->
     <title>HarmoniX - Das Transponier-Tool</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <main>
             <div class="card">
                 <h2>Transposition berechnen</h2>
-                
+
                 <div class="form-group">
                     <label for="originalKey">Ursprüngliche Tonart:</label>
                     <select id="originalKey">
@@ -74,7 +77,8 @@
                     <h3>Ergebnis:</h3>
                     <div class="result-content">
                         <p><strong>Ursprüngliche Tonart:</strong> <span id="originalResult"></span></p>
-                        <p><strong>Transponierte Tonart:</strong> <span id="transposedResult" class="highlight"></span></p>
+                        <p><strong>Transponierte Tonart:</strong> <span id="transposedResult" class="highlight"></span>
+                        </p>
                         <p><strong>Intervall:</strong> <span id="intervalResult"></span></p>
                     </div>
                 </div>
@@ -92,8 +96,8 @@
 
                 <div class="info-card">
                     <h3>📝 Beispiel</h3>
-                    <p>Ein Altsaxophon (E♭) spielt in "G-Dur" geschriebene Noten. 
-                    Für ein Klavier (C) muss die Tonart nach "B♭-Dur" transponiert werden.</p>
+                    <p>Ein Altsaxophon (E♭) spielt in "G-Dur" geschriebene Noten.
+                        Für ein Klavier (C) muss die Tonart nach "B♭-Dur" transponiert werden.</p>
                 </div>
             </div>
         </main>
@@ -105,4 +109,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
