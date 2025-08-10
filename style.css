@@ -254,3 +254,85 @@ footer {
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
   transition: all 0.3s ease;
 }
+
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #ddd;
+    background: linear-gradient(145deg, #1a3c44 25%, #1c3a6a 50%, #5e2c61 100%, #3e4c28 75%);
+  }
+
+  .card {
+    background: #2d3748;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  .card h2,
+  .form-group label,
+  .info-card h3,
+  .info-card p {
+    color: #e2e8f0;
+  }
+
+  select {
+    background: #4a5568;
+    color: #e2e8f0;
+    border: 2px solid #718096;
+  }
+
+  select:focus {
+    border-color: #7f9cf5;
+    box-shadow: 0 0 0 3px rgba(127, 156, 245, 0.2);
+  }
+
+  select:hover {
+    border-color: #a0aec0;
+  }
+
+  button {
+    background: linear-gradient(135deg, #7f9cf5 0%, #9f7aea 100%);
+  }
+
+  button:hover {
+    box-shadow: 0 5px 15px rgba(127, 156, 245, 0.5);
+  }
+
+  button:disabled {
+    background: #718096;
+  }
+
+  .result {
+    background: #4a5568;
+    border: 2px solid #718096;
+  }
+
+  .result h3 {
+    color: #e2e8f0;
+  }
+
+  .highlight {
+    color: #7f9cf5;
+  }
+
+  .info-card {
+    background: rgba(45, 55, 72, 0.95);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .info-card li {
+    background: #4a5568;
+    border-left: 4px solid #7f9cf5;
+  }
+
+  footer {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .card:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .info-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  }
+}
