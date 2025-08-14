@@ -9,7 +9,13 @@ body {
   font-family: "Rubik";
   line-height: 1.6;
   color: #333;
-  background: linear-gradient(145deg, #1f5059 25%, #234982 50%, #76387a 100%, #4e6233 75%);
+  background: linear-gradient(
+    145deg,
+    #1f5059 25%,
+    #234982 50%,
+    #76387a 100%,
+    #4e6233 75%
+  );
   min-height: 100vh;
 }
 
@@ -260,7 +266,13 @@ footer {
 @media (prefers-color-scheme: dark) {
   body {
     color: #ddd;
-    background: linear-gradient(145deg, #1a3c44 25%, #1c3a6a 50%, #5e2c61 100%, #3e4c28 75%);
+    background: linear-gradient(
+      145deg,
+      #1a3c44 25%,
+      #1c3a6a 50%,
+      #5e2c61 100%,
+      #3e4c28 75%
+    );
   }
 
   .card {
