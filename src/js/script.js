@@ -1,3 +1,5 @@
+const VERSION = '1.0.5';
+
 class MusicTransposer {
     constructor() {
         this.chromaticScale = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
@@ -100,6 +102,7 @@ function displayResult(originalKey, transposedKey, interval) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("version").innerText = `v${VERSION}`;
     document.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
             transpose();
